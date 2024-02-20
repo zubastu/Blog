@@ -1,0 +1,30 @@
+@use '../../assets/styles/variables';
+@use '../../assets/styles/mixins';
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 48px;
+  padding: 8px 14px 8px 14px;
+  border-radius: 6px;
+  border: 1px solid variables.$color-palette-form-border;
+}
+
+.button {
+  border: none;
+  background: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.input {
+  @include mixins.typography-s;
+  border: none;
+  background: inherit;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  color: variables.$color-palette-input-color;
+}

@@ -17,3 +17,6 @@
   @include mixins.typography-m;
   font-family: variables.$font-roboto;
 }
+.backLink {
+  @include mixins.typography-m;
+}

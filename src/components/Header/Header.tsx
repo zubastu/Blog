@@ -2,13 +2,30 @@ import styles from './styles.module.scss';
 import {
   mainSubtitleTextContent,
   mainTitleTextContent,
+  topicBackLinkTextContent,
 } from '../../constants/textContentConstants';
+import SearchForm from '../SearchForm/SearchForm';
+import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+  const { pathname } = useLocation();
+
+  const isTopic = !pathname.includes('topic');
+
   return (
     <header className={styles.header}>
-      <h1 className={styles.heading}>{mainTitleTextContent}</h1>
-      <p className={styles.subtitle}>{mainSubtitleTextContent}</p>
+      {isTopic ? (
+        <>
+          <h1 className={styles.heading}>{mainTitleTextContent}</h1>
+          <p className={styles.subtitle}>{mainSubtitleTextContent}</p>
+          <SearchForm />
+        </>
+      ) : (
+        <Link to="/" className={styles.backLink}>
+          {topicBackLinkTextContent}
+        </Link>
+      )}
     </header>
   );
 };
