@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router';
 
 import styles from './App.module.scss';
+import Header from '../Header/Header';
 
 enum Paths {
   main = '/',
@@ -10,12 +11,11 @@ enum Paths {
 const App = () => {
   return (
     <>
-      <header className={styles.header} />
+      <Header />
       <main className={styles.main}>
         <Routes>
-          <Route path={Paths.main} element={<>test</>}>
-            <Route path={Paths.topic} element={<>test</>} />
-          </Route>
+          <Route path={Paths.main} element={<>test</>} />
+          <Route path={Paths.topic} element={<>test2</>} />
         </Routes>
       </main>
       <footer className={styles.footer} />
