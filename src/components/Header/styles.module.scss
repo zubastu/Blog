@@ -1,4 +1,19 @@
 @use '../../assets/styles/variables';
 @use '../../assets/styles/mixins';
 
-
+.header {
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+}
+.heading {
+  @include mixins.typography-xl;
+  font-family: variables.$font-roboto;
+}
+.subtitle {
+  @include mixins.typography-m;
+  font-family: variables.$font-roboto;
+}
