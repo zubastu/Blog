@@ -1,13 +1,25 @@
-import './App.css';
 import { Route, Routes } from 'react-router';
+
+import styles from './App.module.scss';
+
+enum Paths {
+  main = '/',
+  topic = 'topic/:id',
+}
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<></>}>
-        <Route path="topic/:id" element={<></>} />
-      </Route>
-    </Routes>
+    <>
+      <header className={styles.header} />
+      <main className={styles.main}>
+        <Routes>
+          <Route path={Paths.main} element={<>test</>}>
+            <Route path={Paths.topic} element={<>test</>} />
+          </Route>
+        </Routes>
+      </main>
+      <footer className={styles.footer} />
+    </>
   );
 };
 
