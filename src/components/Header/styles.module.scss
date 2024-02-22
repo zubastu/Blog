@@ -11,11 +11,14 @@
 }
 .heading {
   @include mixins.typography-xl;
-  font-family: variables.$font-roboto;
+  letter-spacing: 0.02em;
+  text-align: left;
+  max-width: 1140px;
+  font-weight: 400;
+
 }
 .subtitle {
   @include mixins.typography-m;
-  font-family: variables.$font-roboto;
 }
 .backLink {
   @include mixins.typography-m;
