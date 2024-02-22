@@ -4,7 +4,6 @@ import {
   mainTitleTextContent,
   topicBackLinkTextContent,
 } from '../../constants/textContentConstants';
-import SearchForm from '../SearchForm/SearchForm';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import Reactions from '../Reactions/Reactions';
@@ -20,7 +19,6 @@ const Header = () => {
         <>
           <h1 className={styles.heading}>{mainTitleTextContent}</h1>
           <p className={styles.subtitle}>{mainSubtitleTextContent}</p>
-          <SearchForm />
         </>
       ) : (
         <div className={styles.container}>

@@ -13,8 +13,8 @@ type TReactionsProps = {
 };
 
 const Reactions: React.FC<TReactionsProps> = ({
-  likesCount = 1230,
-  dislikesCount = 230,
+  likesCount = 0,
+  dislikesCount = 0,
   isLiked = false,
   isDisliked = false,
 }) => {

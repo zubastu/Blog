@@ -1,5 +1,6 @@
 import styles from './styles.module.scss';
 import { Route, Routes } from 'react-router';
+import SearchForm from '../../components/SearchForm/SearchForm';
 
 enum Paths {
   main = '/',
@@ -9,6 +10,7 @@ enum Paths {
 const Main = () => {
   return (
     <main className={styles.main}>
+      <SearchForm />
       <Routes>
         <Route path={Paths.main} element={<>test</>} />
         <Route path={Paths.topic} element={<>test2</>} />
