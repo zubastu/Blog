@@ -13,8 +13,8 @@ type TReactionsProps = {
 };
 
 const Reactions: React.FC<TReactionsProps> = ({
-  likesCount = 0,
-  dislikesCount = 0,
+  likesCount = 1230,
+  dislikesCount = 230,
   isLiked = false,
   isDisliked = false,
 }) => {
@@ -49,16 +49,21 @@ const Reactions: React.FC<TReactionsProps> = ({
   return (
     <div className={styles.container}>
       <div className={styles.reactionsContainer}>
-        <button className={styles.reaction} onClick={handleLikeClick}>
-          <img src={isLike ? likeActive : likeDisabled} alt="like" />
+        <button className={styles.reactionButton} onClick={handleLikeClick}>
+          <img
+            className={styles.reactionImage}
+            src={isLike ? likeActive : likeDisabled}
+            alt="like"
+          />
         </button>
 
         <p className={styles.counter}>{likesCounter}</p>
       </div>
 
       <div className={styles.reactionsContainer}>
-        <button className={styles.reaction} onClick={handleDislikeClick}>
+        <button className={styles.reactionButton} onClick={handleDislikeClick}>
           <img
+            className={styles.reactionImage}
             src={isDislike ? dislikeActive : dislikeDisabled}
             alt="dislike"
           />

@@ -27,7 +27,12 @@ const Header = () => {
           <Link to="/" className={styles.backLink}>
             {topicBackLinkTextContent}
           </Link>
-          <Reactions />
+          <Reactions
+            dislikesCount={10}
+            isDisliked={false}
+            isLiked={true}
+            likesCount={50}
+          />
         </div>
       )}
     </header>
