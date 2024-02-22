@@ -1,0 +1,30 @@
+@use '../../assets/styles/variables';
+@use '../../assets/styles/mixins';
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+}
+.heading {
+  @include mixins.typography-xl;
+  font-family: variables.$font-roboto;
+}
+.subtitle {
+  @include mixins.typography-m;
+  font-family: variables.$font-roboto;
+}
+.backLink {
+  @include mixins.typography-m;
+  min-width: 264px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}

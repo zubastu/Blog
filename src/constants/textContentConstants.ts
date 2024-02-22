@@ -13,3 +13,5 @@ export const topicSubtitleTextContent = `Интернет - огромный р�
 Рассказываем, как правильно настраивать рекламу в интернете.`;
 
 export const topicButtonReadTextContent = 'Читать далее';
+
+export const topicBackLinkTextContent = '← Вернуться к статьям';
