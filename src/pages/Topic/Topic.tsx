@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
 
 const Topic = () => {
-  return <div></div>;
+  return <section></section>;
 };
 
 export default Topic;
