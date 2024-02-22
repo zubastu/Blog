@@ -4,6 +4,7 @@ import likeDisabled from '../../assets/images/disabled_like.svg';
 import dislikeActive from '../../assets/images/active_dislike.svg';
 import dislikeDisabled from '../../assets/images/disbled_dislike.svg';
 import { useState } from 'react';
+import { getRandomImage } from '../../utils/utils';
 
 type TReactionsProps = {
   likesCount: number;
