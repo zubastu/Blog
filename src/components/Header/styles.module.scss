@@ -2,7 +2,7 @@
 @use '../../assets/styles/mixins';
 
 .header {
-  max-width: 1400px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,4 +19,12 @@
 }
 .backLink {
   @include mixins.typography-m;
+  min-width: 264px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }

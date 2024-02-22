@@ -7,6 +7,7 @@ import {
 import SearchForm from '../SearchForm/SearchForm';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
+import Reactions from '../Reactions/Reactions';
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -22,9 +23,12 @@ const Header = () => {
           <SearchForm />
         </>
       ) : (
-        <Link to="/" className={styles.backLink}>
-          {topicBackLinkTextContent}
-        </Link>
+        <div className={styles.container}>
+          <Link to="/" className={styles.backLink}>
+            {topicBackLinkTextContent}
+          </Link>
+          <Reactions />
+        </div>
       )}
     </header>
   );
