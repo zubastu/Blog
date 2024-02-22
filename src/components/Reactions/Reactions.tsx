@@ -3,7 +3,7 @@ import likeActive from '../../assets/images/active_like.svg';
 import likeDisabled from '../../assets/images/disabled_like.svg';
 import dislikeActive from '../../assets/images/active_dislike.svg';
 import dislikeDisabled from '../../assets/images/disbled_dislike.svg';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 type TReactionsProps = {
   likesCount: number;
