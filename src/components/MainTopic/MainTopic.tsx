@@ -1,8 +1,9 @@
 import styles from './styles.module.scss';
 import Reactions from '../Reactions/Reactions';
 import TopicReadButton from '../TopicReadButton/TopicReadButton';
+import { topicButtonReadTextContent } from '../../constants/textContentConstants';
 
-type TMainTopicProps = {
+export type TTopicProps = {
   title: string;
   subtitle: string;
   image: string;
@@ -10,7 +11,7 @@ type TMainTopicProps = {
   dislikesCount: number;
 };
 
-const MainTopic: React.FC<TMainTopicProps> = ({
+const MainTopic: React.FC<TTopicProps> = ({
   title,
   image,
   subtitle,
@@ -26,10 +27,10 @@ const MainTopic: React.FC<TMainTopicProps> = ({
           <Reactions dislikesCount={dislikesCount} likesCount={likesCount} />
         </div>
         <p className={styles.topicSubtitle}>{subtitle}</p>
-      </div>
 
-      <div className={styles.topicButtonContainer}>
-        <TopicReadButton text="Читать далее" />
+        <div className={styles.topicButtonContainer}>
+          <TopicReadButton text={topicButtonReadTextContent} />
+        </div>
       </div>
     </section>
   );

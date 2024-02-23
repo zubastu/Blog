@@ -7,10 +7,11 @@
   border-radius: 12px;
   min-height: 925px;
   width: 100%;
+  overflow: hidden;
 }
 
 .topicImage {
-  object-fit: cover;
+  object-fit: contain;
   height: 100%;
   width: 100%;
   max-height: 600px;
