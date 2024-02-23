@@ -4,13 +4,12 @@ import likeDisabled from '../../assets/images/disabled_like.svg';
 import dislikeActive from '../../assets/images/active_dislike.svg';
 import dislikeDisabled from '../../assets/images/disbled_dislike.svg';
 import { useState } from 'react';
-import { getRandomImage } from '../../utils/utils';
 
 type TReactionsProps = {
   likesCount: number;
   dislikesCount: number;
-  isLiked: boolean;
-  isDisliked: boolean;
+  isLiked?: boolean;
+  isDisliked?: boolean;
 };
 
 const Reactions: React.FC<TReactionsProps> = ({
@@ -30,6 +29,7 @@ const Reactions: React.FC<TReactionsProps> = ({
     setLikesCounter((prev) => (!like ? (prev += 1) : (prev -= 1)));
     dislike && handleSetDislikeCounter();
   };
+
   const handleSetDislikeCounter = () => {
     setDislikesCounter((prev) => (!dislike ? (prev += 1) : (prev -= 1)));
     like && handleSetLikeCounter();

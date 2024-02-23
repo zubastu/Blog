@@ -1,0 +1,44 @@
+@use '../../assets/styles/variables';
+@use '../../assets/styles/mixins';
+
+.topic {
+  @include mixins.shadow;
+  border: 1px solid variables.$color-palette-topic-border;
+  border-radius: 12px;
+  min-height: 925px;
+  width: 100%;
+}
+
+.topicImage {
+  width: 100%;
+  max-height: 600px;
+  height: 100%;
+}
+
+.topicTextContent {
+  padding: 24px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.topicTitle {
+  @include mixins.typography-l;
+}
+
+.topicReactionsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topicSubtitle {
+  @include mixins.typography-m;
+}
+
+.topicButtonContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
