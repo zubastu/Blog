@@ -8,8 +8,8 @@ import { useState } from 'react';
 type TReactionsProps = {
   likesCount: number;
   dislikesCount: number;
-  isLiked: boolean;
-  isDisliked: boolean;
+  isLiked?: boolean;
+  isDisliked?: boolean;
 };
 
 const Reactions: React.FC<TReactionsProps> = ({
@@ -29,6 +29,7 @@ const Reactions: React.FC<TReactionsProps> = ({
     setLikesCounter((prev) => (!like ? (prev += 1) : (prev -= 1)));
     dislike && handleSetDislikeCounter();
   };
+
   const handleSetDislikeCounter = () => {
     setDislikesCounter((prev) => (!dislike ? (prev += 1) : (prev -= 1)));
     like && handleSetLikeCounter();

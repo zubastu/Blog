@@ -1,0 +1,36 @@
+@use '../../assets/styles/variables';
+@use '../../assets/styles/mixins';
+
+
+.topicContainer {
+  @include mixins.shadow;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  max-width: 558px;
+  width: 100%;
+  border: 1px solid variables.$color-palette-topic-border;
+  margin: 0 0 24px 0;
+}
+
+.topicImage {
+  min-height: 273px;
+}
+
+.topicContentContainer {
+  padding: 24px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.topicContainer:last-child{
+  margin: 0;
+}
+
+.topicButtonContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+

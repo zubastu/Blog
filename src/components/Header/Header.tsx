@@ -2,11 +2,8 @@ import styles from './styles.module.scss';
 import {
   mainSubtitleTextContent,
   mainTitleTextContent,
-  topicBackLinkTextContent,
 } from '../../constants/textContentConstants';
 import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
-import Reactions from '../Reactions/Reactions';
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -20,19 +17,7 @@ const Header = () => {
           <h1 className={styles.heading}>{mainTitleTextContent}</h1>
           <p className={styles.subtitle}>{mainSubtitleTextContent}</p>
         </>
-      ) : (
-        <div className={styles.container}>
-          <Link to="/" className={styles.backLink}>
-            {topicBackLinkTextContent}
-          </Link>
-          <Reactions
-            dislikesCount={10}
-            isDisliked={false}
-            isLiked={true}
-            likesCount={50}
-          />
-        </div>
-      )}
+      ) : null}
     </header>
   );
 };

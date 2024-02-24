@@ -7,12 +7,17 @@
 
 @mixin typography-xs {
   font-size: 16px;
-  line-height: 19px;
+  line-height: 18.75px;
 }
 
 @mixin typography-s {
   font-size: 16px;
   line-height: 24px;
+}
+
+@mixin typography-mm {
+  font-size: 18px;
+  line-height: 26px;
 }
 
 @mixin typography-m {
@@ -23,6 +28,11 @@
 @mixin typography-l {
   font-size: 28px;
   line-height: 32px;
+}
+
+@mixin typography-x {
+  font-size: 40px;
+  line-height: 48px;
 }
 
 @mixin typography-xl {
