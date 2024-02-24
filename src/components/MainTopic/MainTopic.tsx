@@ -7,7 +7,7 @@ import { TTopicProps } from '../../types/types';
 const MainTopic: React.FC<TTopicProps> = ({
   title,
   image,
-  subtitle,
+  body,
   dislikesCount,
   likesCount,
 }) => {
@@ -19,7 +19,7 @@ const MainTopic: React.FC<TTopicProps> = ({
           <h2 className={styles.topicTitle}>{title}</h2>
           <Reactions dislikesCount={dislikesCount} likesCount={likesCount} />
         </div>
-        <p className={styles.topicSubtitle}>{subtitle}</p>
+        <p className={styles.topicSubtitle}>{body}</p>
 
         <div className={styles.topicButtonContainer}>
           <TopicReadButton text={topicButtonReadTextContent} />

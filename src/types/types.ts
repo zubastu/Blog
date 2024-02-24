@@ -1,7 +1,8 @@
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { Action, ActionCreator, Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 import { store } from '../services/store';
 import { TTopicsActions } from '../services/actions/topicsActions';
-
-export type TStore = ReturnType<typeof store.getState>;
 
 export type TTopicProps = {
   title: string;
@@ -38,3 +39,14 @@ export type TTopic = TTopicResponse & {
 export type TTopicItemProps = Omit<TTopicProps, 'subtitle'>;
 
 export type TApplicationActions = TTopicsActions;
+
+export type TStore = ReturnType<typeof store.getState>;
+
+export type AppThunk<TReturn = void> = ActionCreator<
+  ThunkAction<TReturn, Action, TStore, TApplicationActions>
+>;
+
+export type AppDispatch = Dispatch<TApplicationActions>;
+
+export const useAppDispatch = () => useDispatch<AppDispatch & AppThunk>();
+export const useAppSelector: TypedUseSelectorHook<TStore> = useSelector;
