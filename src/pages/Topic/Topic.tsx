@@ -12,10 +12,10 @@ const Topic = () => {
           {topicBackLinkTextContent}
         </Link>
         <Reactions
-          dislikesCount={getRandomNumber(0, 99)}
+          dislikesCount={getRandomNumber(0, 50)}
           isDisliked={false}
           isLiked={false}
-          likesCount={getRandomNumber(0, 999)}
+          likesCount={getRandomNumber(0, 50)}
         />
       </div>
 
