@@ -5,7 +5,6 @@
   @include mixins.shadow;
   border: 1px solid variables.$color-palette-topic-border;
   border-radius: 12px;
-  min-height: 925px;
   width: 100%;
   overflow: hidden;
 }

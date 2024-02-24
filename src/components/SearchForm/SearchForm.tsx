@@ -1,20 +1,17 @@
 import styles from './styles.module.scss';
 import { FormProvider, useForm } from 'react-hook-form';
 import { searchTextContent } from '../../constants/textContentConstants';
-import { API_URL } from '../../constants/apiConstants';
 import searchIcon from '../../assets/images/searchIcon.svg';
-import { TSearchForm } from '../../types/types';
+import { TSearchForm, useAppDispatch } from '../../types/types';
+import { thunkSearchTopics } from '../../services/thunks/topicsThunk';
 
 const SearchForm = () => {
+  const dispatch = useAppDispatch();
   const formMethods = useForm<TSearchForm>();
   const { formState, register, handleSubmit, setValue } = formMethods;
   const onSubmit = (name: string) => {
-    fetch(`${API_URL}/posts?title=${name}`)
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        setValue('title', '');
-      });
+    dispatch(thunkSearchTopics(name));
+    setValue('title', '');
   };
 
   return (

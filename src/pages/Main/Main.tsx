@@ -2,8 +2,6 @@ import styles from './styles.module.scss';
 import { Route, Routes } from 'react-router';
 import Topics from '../Topics/Topics';
 import Topic from '../Topic/Topic';
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../types/types';
 
 enum Paths {
   main = '/',
@@ -11,11 +9,6 @@ enum Paths {
 }
 
 const Main = () => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch();
-  }, [dispatch]);
-
   return (
     <main className={styles.main}>
       <Routes>

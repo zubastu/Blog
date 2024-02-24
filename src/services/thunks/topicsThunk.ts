@@ -19,7 +19,7 @@ export const thunkGetTopicList: AppThunk = () => async (dispatch) => {
   dispatch({ type: GET_TOPICS_REQUEST });
   try {
     const topicList = await getTopics();
-    topicList?.forEach((topic: TTopicResponse): TTopic => {
+    const newTopics = topicList?.map((topic: TTopicResponse): TTopic => {
       return {
         ...topic,
         likesCount: getRandomNumber(0, 50),
@@ -27,7 +27,7 @@ export const thunkGetTopicList: AppThunk = () => async (dispatch) => {
         image: getRandomImage(),
       };
     });
-    dispatch({ type: GET_TOPICS_SUCCESS, payload: topicList });
+    dispatch({ type: GET_TOPICS_SUCCESS, payload: newTopics });
   } catch (e) {
     dispatch({ type: GET_TOPICS_ERROR });
   } finally {
@@ -56,15 +56,17 @@ export const thunkSearchTopics: AppThunk =
     dispatch({ type: SEARCH_TOPICS_REQUEST });
     try {
       const topicsSearchResult = await searchTopic(value);
-      topicsSearchResult?.forEach((topic: TTopicResponse): TTopic => {
-        return {
-          ...topic,
-          likesCount: getRandomNumber(0, 50),
-          dislikesCount: getRandomNumber(0, 50),
-          image: getRandomImage(),
-        };
-      });
-      dispatch({ type: SEARCH_TOPICS_SUCCESS, payload: topicsSearchResult });
+      const newTopics = topicsSearchResult?.map(
+        (topic: TTopicResponse): TTopic => {
+          return {
+            ...topic,
+            likesCount: getRandomNumber(0, 50),
+            dislikesCount: getRandomNumber(0, 50),
+            image: getRandomImage(),
+          };
+        },
+      );
+      dispatch({ type: SEARCH_TOPICS_SUCCESS, payload: newTopics });
     } catch (e) {
       dispatch({ type: SEARCH_TOPICS_ERROR });
     } finally {

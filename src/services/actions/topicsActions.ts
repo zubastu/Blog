@@ -10,6 +10,8 @@ export const SEARCH_TOPICS_REQUEST = 'SEARCH_TOPICS_REQUEST';
 export const SEARCH_TOPICS_SUCCESS = 'SEARCH_TOPICS_SUCCESS';
 export const SEARCH_TOPICS_ERROR = 'SEARCH_TOPICS_ERROR';
 
+export const SEARCH_TOPICS_RESET = 'SEARCH_TOPICS_RESET';
+
 export const TOPIC_BY_ID_REQUEST = 'TOPIC_BY_ID_REQUEST';
 export const TOPIC_BY_ID_SUCCESS = 'TOPIC_BY_ID_SUCCESS';
 export const TOPIC_BY_ID_ERROR = 'TOPIC_BY_ID_ERROR';
@@ -53,6 +55,10 @@ export type TSearchTopicsError = {
   readonly type: typeof SEARCH_TOPICS_ERROR;
 };
 
+export type TSearchTopicReset = {
+  readonly type: typeof SEARCH_TOPICS_RESET;
+};
+
 export type TTopicsActions =
   | TGetTopicsRequest
   | TGetTopicsSuccess
@@ -62,4 +68,5 @@ export type TTopicsActions =
   | TSearchTopicsRequest
   | TTopicByIdRequest
   | TTopicByIdError
-  | TTopicByIdSuccess;
+  | TTopicByIdSuccess
+  | TSearchTopicReset;

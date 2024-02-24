@@ -4,6 +4,7 @@ import {
   GET_TOPICS_SUCCESS,
   SEARCH_TOPICS_ERROR,
   SEARCH_TOPICS_REQUEST,
+  SEARCH_TOPICS_RESET,
   SEARCH_TOPICS_SUCCESS,
   TOPIC_BY_ID_ERROR,
   TOPIC_BY_ID_REQUEST,
@@ -14,6 +15,7 @@ import {
 const initialState = {
   isRequest: false,
   isError: false,
+  hasRequest: false,
   topicList: [],
   searchTopicList: [],
   topicById: {
@@ -44,7 +46,7 @@ export const topicReducer = (state = initialState, action: TTopicsActions) => {
     case SEARCH_TOPICS_ERROR:
       return { ...state, isError: true, isRequest: false };
     case SEARCH_TOPICS_REQUEST:
-      return { ...state, isError: false, isRequest: true };
+      return { ...state, isError: false, isRequest: true, hasRequest: true };
     case SEARCH_TOPICS_SUCCESS:
       return {
         ...state,
@@ -52,6 +54,8 @@ export const topicReducer = (state = initialState, action: TTopicsActions) => {
         isRequest: false,
         searchTopicList: action.payload,
       };
+    case SEARCH_TOPICS_RESET:
+      return { ...state, isError: true, isRequest: false, hasRequest: false };
 
     case TOPIC_BY_ID_ERROR:
       return { ...state, isError: true, isRequest: false };
@@ -62,7 +66,7 @@ export const topicReducer = (state = initialState, action: TTopicsActions) => {
         ...state,
         isError: false,
         isRequest: false,
-        searchTopicList: action.payload,
+        topicById: action.payload,
       };
 
     default:
