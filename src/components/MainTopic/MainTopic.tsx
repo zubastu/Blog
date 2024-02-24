@@ -2,14 +2,7 @@ import styles from './styles.module.scss';
 import Reactions from '../Reactions/Reactions';
 import TopicReadButton from '../TopicReadButton/TopicReadButton';
 import { topicButtonReadTextContent } from '../../constants/textContentConstants';
-
-export type TTopicProps = {
-  title: string;
-  subtitle: string;
-  image: string;
-  likesCount: number;
-  dislikesCount: number;
-};
+import { TTopicProps } from '../../types/types';
 
 const MainTopic: React.FC<TTopicProps> = ({
   title,

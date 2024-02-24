@@ -1,10 +1,8 @@
 import styles from './styles.module.scss';
-import { TTopicProps } from '../MainTopic/MainTopic';
 import Reactions from '../Reactions/Reactions';
 import TopicReadButton from '../TopicReadButton/TopicReadButton';
 import { topicButtonReadTextContent } from '../../constants/textContentConstants';
-
-type TTopicItemProps = Omit<TTopicProps, 'subtitle'>;
+import { TTopicItemProps } from '../../types/types';
 
 const TopicItem: React.FC<TTopicItemProps> = ({
   image,

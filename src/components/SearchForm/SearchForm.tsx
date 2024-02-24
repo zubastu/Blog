@@ -3,10 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { searchTextContent } from '../../constants/textContentConstants';
 import { API_URL } from '../../constants/apiConstants';
 import searchIcon from '../../assets/images/searchIcon.svg';
-
-type TSearchForm = {
-  title: string;
-};
+import { TSearchForm } from '../../types/types';
 
 const SearchForm = () => {
   const formMethods = useForm<TSearchForm>();
