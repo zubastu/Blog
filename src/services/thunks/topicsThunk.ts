@@ -1,5 +1,4 @@
 import { topicsAPI } from '../../api/topicsAPI';
-import { AppThunk } from '../reducers';
 import {
   GET_TOPICS_REQUEST,
   TOPIC_BY_ID_REQUEST,
@@ -12,7 +11,7 @@ import {
   SEARCH_TOPICS_SUCCESS,
 } from '../actions/topicsActions';
 import { getRandomImage, getRandomNumber } from '../../utils/utils';
-import { TTopic, TTopicResponse } from '../../types/types';
+import { AppThunk, TTopic, TTopicResponse } from '../../types/types';
 
 const { searchTopic, getTopics, getTopicById } = topicsAPI();
 
