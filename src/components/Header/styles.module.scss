@@ -20,14 +20,3 @@
 .subtitle {
   @include mixins.typography-m;
 }
-.backLink {
-  @include mixins.typography-m;
-  min-width: 264px;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
