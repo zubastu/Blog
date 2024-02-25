@@ -37,9 +37,7 @@ const Topic = () => {
     } else {
       dispatch(thunkGetTopicByd(id));
     }
-
-    console.log(topic);
-  }, [id, topic]);
+  }, [id, topic, topicList, searchTopicList]);
 
   return (
     <section className={styles.topicContainer}>
@@ -53,24 +51,24 @@ const Topic = () => {
                 {topicBackLinkTextContent}
               </Link>
               <Reactions
-                id={topic?.id}
-                dislikesCount={topic?.dislikesCount}
-                isDisliked={topic?.isDisliked}
-                isLiked={topic?.isLiked}
-                likesCount={topic?.likesCount}
+                id={topic.id}
+                dislikesCount={topic.dislikesCount}
+                isDisliked={topic.isDisliked}
+                isLiked={topic.isLiked}
+                likesCount={topic.likesCount}
                 isSearchList={location?.state?.isSearchList || false}
               />
             </div>
 
             <div className={styles.contentContainer}>
-              <h2 className={styles.title}>{topic?.title}</h2>
+              <h2 className={styles.title}>{topic.title}</h2>
               <img
                 className={styles.image}
-                src={topic?.image}
+                src={topic.image}
                 alt="Картинка топика"
               />
 
-              <p className={styles.textContent}>{topic?.body}</p>
+              <p className={styles.textContent}>{topic.body}</p>
             </div>
           </>
         )

@@ -20,15 +20,6 @@ const initialState = {
   hasRequest: false,
   topicList: [],
   searchTopicList: [],
-  topicById: {
-    userId: 0,
-    id: 0,
-    title: '',
-    body: '',
-    likesCount: 0,
-    dislikesCount: 0,
-    image: '',
-  },
 };
 
 export const topicReducer = (state = initialState, action: TTopicsActions) => {
@@ -73,6 +64,7 @@ export const topicReducer = (state = initialState, action: TTopicsActions) => {
       };
 
     case UPDATE_REACTIONS:
+      console.log(action.payload);
       const list = action.payload.isSearchList
         ? state.searchTopicList
         : state.topicList;

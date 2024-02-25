@@ -11,6 +11,8 @@ const TopicItem: React.FC<TTopicItemProps> = ({
   dislikesCount,
   id,
   isSearchList = false,
+  isLiked,
+  isDisliked,
 }) => {
   return (
     <li className={styles.topicContainer}>
@@ -21,9 +23,11 @@ const TopicItem: React.FC<TTopicItemProps> = ({
 
         <div className={styles.topicButtonContainer}>
           <Reactions
-            dislikesCount={likesCount}
-            likesCount={dislikesCount}
+            dislikesCount={dislikesCount}
+            likesCount={likesCount}
             isSearchList={isSearchList}
+            isDisliked={isDisliked}
+            isLiked={isLiked}
             id={id}
           />
           <TopicReadButton
