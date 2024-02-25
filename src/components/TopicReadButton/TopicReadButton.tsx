@@ -2,10 +2,18 @@ import styles from './styles.module.scss';
 
 type TTopicRedButtonProps = {
   text: string;
+  handleClick: () => void;
 };
 
-const TopicReadButton: React.FC<TTopicRedButtonProps> = ({ text }) => {
-  return <button className={styles.button}>{text}</button>;
+const TopicReadButton: React.FC<TTopicRedButtonProps> = ({
+  text,
+  handleClick,
+}) => {
+  return (
+    <button className={styles.button} onClick={handleClick}>
+      {text}
+    </button>
+  );
 };
 
 export default TopicReadButton;

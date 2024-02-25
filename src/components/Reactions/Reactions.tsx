@@ -4,20 +4,18 @@ import likeDisabled from '../../assets/images/disabled_like.svg';
 import dislikeActive from '../../assets/images/active_dislike.svg';
 import dislikeDisabled from '../../assets/images/disbled_dislike.svg';
 import { useState } from 'react';
-
-type TReactionsProps = {
-  likesCount: number;
-  dislikesCount: number;
-  isLiked?: boolean;
-  isDisliked?: boolean;
-};
+import { TReactionsProps, useAppDispatch } from '../../types/types';
+import { UPDATE_REACTIONS } from '../../services/actions/topicsActions';
 
 const Reactions: React.FC<TReactionsProps> = ({
   likesCount = 0,
   dislikesCount = 0,
   isLiked = false,
   isDisliked = false,
+  id,
+  isSearchList = false,
 }) => {
+  const dispatch = useAppDispatch();
   const [like, setLike] = useState<boolean>(isLiked);
   const [dislike, setDislike] = useState<boolean>(isDisliked);
   const [likesCounter, setLikesCounter] = useState<number>(likesCount);
@@ -39,12 +37,34 @@ const Reactions: React.FC<TReactionsProps> = ({
     setLike(!like);
     handleSetLikeCounter();
     setDislike(false);
+    dispatch({
+      type: UPDATE_REACTIONS,
+      payload: {
+        isSearchList,
+        id,
+        likesCount: like ? likesCounter - 1 : likesCounter + 1,
+        dislikesCount: dislike ? dislikesCounter - 1 : dislikesCounter,
+        isLiked: !like,
+        isDisliked: dislike ? false : dislike,
+      },
+    });
   };
 
   const handleDislikeClick = () => {
     setDislike(!dislike);
     handleSetDislikeCounter();
     setLike(false);
+    dispatch({
+      type: UPDATE_REACTIONS,
+      payload: {
+        isSearchList,
+        id,
+        likesCount: like ? likesCounter - 1 : likesCounter,
+        dislikesCount: dislike ? dislikesCounter - 1 : dislikesCount + 1,
+        isLiked: like ? false : like,
+        isDisliked: !dislike,
+      },
+    });
   };
 
   return (

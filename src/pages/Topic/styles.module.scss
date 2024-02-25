@@ -14,7 +14,6 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-
 }
 
 .contentContainer {
@@ -36,4 +35,28 @@
 .textContent {
   @include mixins.typography-mm;
   max-width: 848px;
+}
+
+@media (max-width: 1000px) {
+  .image {
+    min-height: 200px;
+    max-width: 100%;
+  }
+
+}
+
+@media (max-width: 500px) {
+  .title {
+    @include mixins.typography-l;
+  }
+
+  .textContent {
+    @include mixins.typography-mm;
+    max-width: 848px;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 24px;
+  }
 }
