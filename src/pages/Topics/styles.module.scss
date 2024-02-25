@@ -34,3 +34,10 @@
     gap: 24px;
   }
 }
+
+@media (max-width: 500px) {
+  .topicList {
+    gap: 0;
+  }
+}
+

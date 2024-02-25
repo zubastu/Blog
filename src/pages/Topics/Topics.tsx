@@ -11,11 +11,12 @@ const Topics = () => {
   const { topicList, searchTopicList, hasRequest, isRequest } = useAppSelector(
     (store) => store.topics,
   );
+
   const mainTopic = topicList?.length > 0 ? topicList[0] : false;
-  const otherTopics = topicList.length > 0 ? topicList?.slice(1) : false;
 
   const mainSearchTopic =
     searchTopicList && searchTopicList.length > 0 ? searchTopicList[0] : false;
+  const otherTopics = topicList.length > 0 ? topicList?.slice(1) : false;
 
   const otherSearchTopics =
     searchTopicList && searchTopicList.length > 1
@@ -25,105 +26,116 @@ const Topics = () => {
   const handleResetSearch = () => {
     dispatch({ type: SEARCH_TOPICS_RESET });
   };
+
   const showMainTopicFromList = !isRequest && !hasRequest && mainTopic;
+
   const showMainTopicFromSearchList =
     !isRequest && hasRequest && mainSearchTopic;
+
   const showOtherTopicsFromMainList = !isRequest && !hasRequest && otherTopics;
+
   const showOtherTopicsFromSearchList =
     !isRequest && hasRequest && otherSearchTopics;
+
   return (
-    <section className={styles.main}>
-      <SearchForm />
-
-      {showMainTopicFromList && (
-        <MainTopic
-          title={mainTopic.title}
-          body={mainTopic.body}
-          image={mainTopic.image}
-          likesCount={mainTopic.likesCount}
-          dislikesCount={mainTopic.dislikesCount}
-          isLiked={mainTopic.isLiked}
-          isDisliked={mainTopic.isDisliked}
-          id={mainTopic.id}
-        />
-      )}
-
-      {showMainTopicFromSearchList ? (
-        <MainTopic
-          title={mainSearchTopic.title}
-          body={mainSearchTopic.body}
-          image={mainSearchTopic.image}
-          likesCount={mainSearchTopic.likesCount}
-          dislikesCount={mainSearchTopic.dislikesCount}
-          isLiked={mainSearchTopic.isLiked}
-          isDisliked={mainSearchTopic.isDisliked}
-          id={mainSearchTopic.id}
-          isSearchList={true}
-        />
+    <>
+      {isRequest ? (
+        <p className={styles.noResultsText}>Загрузка ....</p>
       ) : (
-        !isRequest &&
-        hasRequest && <p className={styles.noResultsText}>Нет совпадений</p>
-      )}
+        <section className={styles.main}>
+          <SearchForm />
 
-      <ul className={styles.topicList}>
-        {showOtherTopicsFromMainList &&
-          otherTopics?.map(
-            ({
-              image,
-              id,
-              likesCount,
-              dislikesCount,
-              title,
-              body,
-              isLiked,
-              isDisliked,
-            }) => (
-              <TopicItem
-                image={image}
-                likesCount={likesCount}
-                dislikesCount={dislikesCount}
-                isLiked={isLiked}
-                isDisliked={isDisliked}
-                title={title}
-                body={body}
-                id={id}
-                key={id}
-              />
-            ),
+          {showMainTopicFromList && (
+            <MainTopic
+              title={mainTopic.title}
+              body={mainTopic.body}
+              image={mainTopic.image}
+              likesCount={mainTopic.likesCount}
+              dislikesCount={mainTopic.dislikesCount}
+              isLiked={mainTopic.isLiked}
+              isDisliked={mainTopic.isDisliked}
+              id={mainTopic.id}
+            />
           )}
-        {showOtherTopicsFromSearchList &&
-          otherSearchTopics?.map(
-            ({
-              image,
-              id,
-              likesCount,
-              dislikesCount,
-              title,
-              body,
-              isLiked,
-              isDisliked,
-            }) => (
-              <TopicItem
-                image={image}
-                likesCount={likesCount}
-                dislikesCount={dislikesCount}
-                isLiked={isLiked}
-                isDisliked={isDisliked}
-                title={title}
-                body={body}
-                id={id}
-                isSearchList={true}
-                key={id}
-              />
-            ),
+
+          {showMainTopicFromSearchList ? (
+            <MainTopic
+              title={mainSearchTopic.title}
+              body={mainSearchTopic.body}
+              image={mainSearchTopic.image}
+              likesCount={mainSearchTopic.likesCount}
+              dislikesCount={mainSearchTopic.dislikesCount}
+              isLiked={mainSearchTopic.isLiked}
+              isDisliked={mainSearchTopic.isDisliked}
+              id={mainSearchTopic.id}
+              isSearchList={true}
+            />
+          ) : (
+            !isRequest &&
+            hasRequest && <p className={styles.noResultsText}>Нет совпадений</p>
           )}
-      </ul>
-      {!isRequest && hasRequest && (
-        <button className={styles.resetButton} onClick={handleResetSearch}>
-          {topicBackLinkTextContent}
-        </button>
+
+          <ul className={styles.topicList}>
+            {showOtherTopicsFromMainList &&
+              otherTopics?.map(
+                ({
+                  image,
+                  id,
+                  likesCount,
+                  dislikesCount,
+                  title,
+                  body,
+                  isLiked,
+                  isDisliked,
+                }) => (
+                  <TopicItem
+                    image={image}
+                    likesCount={likesCount}
+                    dislikesCount={dislikesCount}
+                    isLiked={isLiked}
+                    isDisliked={isDisliked}
+                    title={title}
+                    body={body}
+                    id={id}
+                    key={id}
+                  />
+                ),
+              )}
+            {showOtherTopicsFromSearchList &&
+              otherSearchTopics?.map(
+                ({
+                  image,
+                  id,
+                  likesCount,
+                  dislikesCount,
+                  title,
+                  body,
+                  isLiked,
+                  isDisliked,
+                }) => (
+                  <TopicItem
+                    image={image}
+                    likesCount={likesCount}
+                    dislikesCount={dislikesCount}
+                    isLiked={isLiked}
+                    isDisliked={isDisliked}
+                    title={title}
+                    body={body}
+                    id={id}
+                    isSearchList={true}
+                    key={id}
+                  />
+                ),
+              )}
+          </ul>
+          {!isRequest && hasRequest && (
+            <button className={styles.resetButton} onClick={handleResetSearch}>
+              {topicBackLinkTextContent}
+            </button>
+          )}
+        </section>
       )}
-    </section>
+    </>
   );
 };
 

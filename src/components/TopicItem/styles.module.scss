@@ -62,4 +62,21 @@
     gap: 24px;
     align-items: center;
   }
+
+  .topicContainer {
+    margin: 0 0 20px 0;
+  }
+
+  .topicContentContainer {
+    padding: 12px 8px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .topicTitle {
+    text-align: center;
+  }
+
+
 }
