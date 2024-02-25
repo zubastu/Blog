@@ -37,6 +37,9 @@ const Topics = () => {
           image={mainTopic.image}
           likesCount={mainTopic.likesCount}
           dislikesCount={mainTopic.dislikesCount}
+          isLiked={mainTopic.isLiked}
+          isDisliked={mainTopic.isDisliked}
+          id={mainTopic.id}
         />
       )}
 
@@ -47,6 +50,10 @@ const Topics = () => {
           image={mainSearchTopic.image}
           likesCount={mainSearchTopic.likesCount}
           dislikesCount={mainSearchTopic.dislikesCount}
+          isLiked={mainSearchTopic.isLiked}
+          isDisliked={mainSearchTopic.isDisliked}
+          id={mainSearchTopic.id}
+          isSearchList={true}
         />
       ) : (
         hasRequest && <p className={styles.noResultsText}>Нет совпадений</p>
@@ -56,13 +63,25 @@ const Topics = () => {
         {!hasRequest &&
           otherTopics &&
           otherTopics?.map(
-            ({ image, id, likesCount, dislikesCount, title, body }) => (
+            ({
+              image,
+              id,
+              likesCount,
+              dislikesCount,
+              title,
+              body,
+              isLiked,
+              isDisliked,
+            }) => (
               <TopicItem
                 image={image}
                 likesCount={likesCount}
                 dislikesCount={dislikesCount}
+                isLiked={isLiked}
+                isDisliked={isDisliked}
                 title={title}
                 body={body}
+                id={id}
                 key={id}
               />
             ),
@@ -70,13 +89,26 @@ const Topics = () => {
         {hasRequest &&
           otherSearchTopics &&
           otherSearchTopics?.map(
-            ({ image, id, likesCount, dislikesCount, title, body }) => (
+            ({
+              image,
+              id,
+              likesCount,
+              dislikesCount,
+              title,
+              body,
+              isLiked,
+              isDisliked,
+            }) => (
               <TopicItem
                 image={image}
                 likesCount={likesCount}
                 dislikesCount={dislikesCount}
+                isLiked={isLiked}
+                isDisliked={isDisliked}
                 title={title}
                 body={body}
+                id={id}
+                isSearchList={true}
                 key={id}
               />
             ),

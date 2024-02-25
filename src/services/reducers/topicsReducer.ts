@@ -8,9 +8,11 @@ import {
   SEARCH_TOPICS_SUCCESS,
   TOPIC_BY_ID_ERROR,
   TOPIC_BY_ID_REQUEST,
-  TOPIC_BY_ID_SUCCESS,
+  SET_TOPIC_BY_ID,
   TTopicsActions,
+  UPDATE_REACTIONS,
 } from '../actions/topicsActions';
+import { TTopic } from '../../types/types';
 
 const initialState = {
   isRequest: false,
@@ -54,6 +56,7 @@ export const topicReducer = (state = initialState, action: TTopicsActions) => {
         isRequest: false,
         searchTopicList: action.payload,
       };
+
     case SEARCH_TOPICS_RESET:
       return { ...state, isError: true, isRequest: false, hasRequest: false };
 
@@ -61,13 +64,30 @@ export const topicReducer = (state = initialState, action: TTopicsActions) => {
       return { ...state, isError: true, isRequest: false };
     case TOPIC_BY_ID_REQUEST:
       return { ...state, isError: false, isRequest: true };
-    case TOPIC_BY_ID_SUCCESS:
+    case SET_TOPIC_BY_ID:
       return {
         ...state,
         isError: false,
         isRequest: false,
         topicById: action.payload,
       };
+
+    case UPDATE_REACTIONS:
+      const list = action.payload.isSearchList
+        ? state.searchTopicList
+        : state.topicList;
+      const topicList = list.map((topic: TTopic) => {
+        return action.payload.id === topic.id
+          ? {
+              ...topic,
+              likesCount: action.payload.likesCount,
+              dislikesCount: action.payload.dislikesCount,
+              isLiked: action.payload.isLiked,
+              isDisliked: action.payload.isDisliked,
+            }
+          : topic;
+      });
+      return { ...state, topicList };
 
     default:
       return state;

@@ -1,4 +1,4 @@
-import { TTopic } from '../../types/types';
+import { TTopic, TUpdatedReactions } from '../../types/types';
 
 export const GET_TOPICS_REQUEST = 'GET_TOPICS_REQUEST';
 
@@ -13,15 +13,17 @@ export const SEARCH_TOPICS_ERROR = 'SEARCH_TOPICS_ERROR';
 export const SEARCH_TOPICS_RESET = 'SEARCH_TOPICS_RESET';
 
 export const TOPIC_BY_ID_REQUEST = 'TOPIC_BY_ID_REQUEST';
-export const TOPIC_BY_ID_SUCCESS = 'TOPIC_BY_ID_SUCCESS';
+export const SET_TOPIC_BY_ID = 'SET_TOPIC_BY_ID';
 export const TOPIC_BY_ID_ERROR = 'TOPIC_BY_ID_ERROR';
+
+export const UPDATE_REACTIONS = 'UPDATE_REACTIONS';
 
 export type TTopicByIdRequest = {
   readonly type: typeof TOPIC_BY_ID_REQUEST;
 };
 
 export type TTopicByIdSuccess = {
-  readonly type: typeof TOPIC_BY_ID_SUCCESS;
+  readonly type: typeof SET_TOPIC_BY_ID;
   readonly payload: TTopic;
 };
 
@@ -58,6 +60,10 @@ export type TSearchTopicsError = {
 export type TSearchTopicReset = {
   readonly type: typeof SEARCH_TOPICS_RESET;
 };
+export type TUpdateReactions = {
+  readonly type: typeof UPDATE_REACTIONS;
+  payload: TUpdatedReactions;
+};
 
 export type TTopicsActions =
   | TGetTopicsRequest
@@ -69,4 +75,5 @@ export type TTopicsActions =
   | TTopicByIdRequest
   | TTopicByIdError
   | TTopicByIdSuccess
-  | TSearchTopicReset;
+  | TSearchTopicReset
+  | TUpdateReactions;

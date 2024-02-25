@@ -7,7 +7,7 @@ import {
   GET_TOPICS_ERROR,
   TOPIC_BY_ID_ERROR,
   SEARCH_TOPICS_ERROR,
-  TOPIC_BY_ID_SUCCESS,
+  SET_TOPIC_BY_ID,
   SEARCH_TOPICS_SUCCESS,
 } from '../actions/topicsActions';
 import { getRandomImage, getRandomNumber } from '../../utils/utils';
@@ -25,6 +25,8 @@ export const thunkGetTopicList: AppThunk = () => async (dispatch) => {
         likesCount: getRandomNumber(0, 50),
         dislikesCount: getRandomNumber(0, 50),
         image: getRandomImage(),
+        isLiked: false,
+        isDisliked: false,
       };
     });
     dispatch({ type: GET_TOPICS_SUCCESS, payload: newTopics });
@@ -44,7 +46,7 @@ export const thunkGetTopicByd: AppThunk = (id: string) => async (dispatch) => {
       dislikesCount: getRandomNumber(0, 50),
       image: getRandomImage(),
     };
-    dispatch({ type: TOPIC_BY_ID_SUCCESS, payload: topic });
+    dispatch({ type: SET_TOPIC_BY_ID, payload: topic });
   } catch (e) {
     dispatch({ type: TOPIC_BY_ID_ERROR });
   } finally {
@@ -63,6 +65,8 @@ export const thunkSearchTopics: AppThunk =
             likesCount: getRandomNumber(0, 50),
             dislikesCount: getRandomNumber(0, 50),
             image: getRandomImage(),
+            isLiked: false,
+            isDisliked: false,
           };
         },
       );

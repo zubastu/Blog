@@ -5,18 +5,24 @@ import { store } from '../services/store';
 import { TTopicsActions } from '../services/actions/topicsActions';
 
 export type TTopicProps = {
+  id: number;
   title: string;
   body: string;
   image: string;
   likesCount: number;
   dislikesCount: number;
+  isLiked: boolean;
+  isDisliked: boolean;
+  isSearchList?: boolean;
 };
 
 export type TReactionsProps = {
+  id: number;
   likesCount: number;
   dislikesCount: number;
   isLiked?: boolean;
   isDisliked?: boolean;
+  isSearchList?: boolean;
 };
 
 export type TSearchForm = {
@@ -34,6 +40,17 @@ export type TTopic = TTopicResponse & {
   likesCount: number;
   dislikesCount: number;
   image: string;
+  isLiked: boolean;
+  isDisliked: boolean;
+};
+
+export type TUpdatedReactions = {
+  likesCount: number;
+  dislikesCount: number;
+  isLiked: boolean;
+  isDisliked: boolean;
+  id: number;
+  isSearchList: boolean;
 };
 
 export type TTopicItemProps = Omit<TTopicProps, 'subtitle'>;

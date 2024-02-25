@@ -10,6 +10,10 @@ const MainTopic: React.FC<TTopicProps> = ({
   body,
   dislikesCount,
   likesCount,
+  id,
+  isLiked,
+  isDisliked,
+  isSearchList = false,
 }) => {
   return (
     <section className={styles.topic}>
@@ -17,12 +21,23 @@ const MainTopic: React.FC<TTopicProps> = ({
       <div className={styles.topicTextContent}>
         <div className={styles.topicReactionsContainer}>
           <h2 className={styles.topicTitle}>{title}</h2>
-          <Reactions dislikesCount={dislikesCount} likesCount={likesCount} />
+          <Reactions
+            dislikesCount={dislikesCount}
+            likesCount={likesCount}
+            isLiked={isLiked}
+            isDisliked={isDisliked}
+            id={id}
+            isSearchList={isSearchList}
+          />
         </div>
         <p className={styles.topicSubtitle}>{body}</p>
 
         <div className={styles.topicButtonContainer}>
-          <TopicReadButton text={topicButtonReadTextContent} />
+          <TopicReadButton
+            text={topicButtonReadTextContent}
+            id={id}
+            isSearchList={isSearchList}
+          />
         </div>
       </div>
     </section>

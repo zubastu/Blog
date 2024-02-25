@@ -9,6 +9,8 @@ const TopicItem: React.FC<TTopicItemProps> = ({
   title,
   likesCount,
   dislikesCount,
+  id,
+  isSearchList = false,
 }) => {
   return (
     <li className={styles.topicContainer}>
@@ -18,8 +20,17 @@ const TopicItem: React.FC<TTopicItemProps> = ({
         <h3 className={styles.topicTitle}>{title}</h3>
 
         <div className={styles.topicButtonContainer}>
-          <Reactions dislikesCount={likesCount} likesCount={dislikesCount} />
-          <TopicReadButton text={topicButtonReadTextContent} />
+          <Reactions
+            dislikesCount={likesCount}
+            likesCount={dislikesCount}
+            isSearchList={isSearchList}
+            id={id}
+          />
+          <TopicReadButton
+            text={topicButtonReadTextContent}
+            id={id}
+            isSearchList={isSearchList}
+          />
         </div>
       </div>
     </li>
