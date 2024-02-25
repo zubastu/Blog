@@ -4,11 +4,7 @@ import { ThunkAction } from 'redux-thunk';
 import { store } from '../services/store';
 import { TTopicsActions } from '../services/actions/topicsActions';
 
-export type TTopicProps = {
-  id: number;
-  title: string;
-  body: string;
-  image: string;
+export type TReactionSettings = {
   likesCount: number;
   dislikesCount: number;
   isLiked: boolean;
@@ -16,14 +12,20 @@ export type TTopicProps = {
   isSearchList?: boolean;
 };
 
+export type TTopicProps = {
+  id: number;
+  title: string;
+  body: string;
+  image: string;
+} & TReactionSettings;
+
 export type TReactionsProps = {
   id: number;
-  likesCount: number;
-  dislikesCount: number;
-  isLiked?: boolean;
-  isDisliked?: boolean;
-  isSearchList?: boolean;
-};
+} & TReactionSettings;
+
+export type TTopic = TTopicResponse & {
+  image: string;
+} & TReactionSettings;
 
 export type TSearchForm = {
   title: string;
@@ -34,23 +36,6 @@ export type TTopicResponse = {
   id: number;
   title: string;
   body: string;
-};
-
-export type TTopic = TTopicResponse & {
-  likesCount: number;
-  dislikesCount: number;
-  image: string;
-  isLiked: boolean;
-  isDisliked: boolean;
-};
-
-export type TUpdatedReactions = {
-  likesCount: number;
-  dislikesCount: number;
-  isLiked: boolean;
-  isDisliked: boolean;
-  id: number;
-  isSearchList: boolean;
 };
 
 export type TTopicItemProps = Omit<TTopicProps, 'subtitle'>;
