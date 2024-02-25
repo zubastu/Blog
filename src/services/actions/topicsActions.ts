@@ -1,4 +1,4 @@
-import { TTopic, TUpdatedReactions } from '../../types/types';
+import { TTopic, TReactionsProps } from '../../types/types';
 
 export const GET_TOPICS_REQUEST = 'GET_TOPICS_REQUEST';
 
@@ -62,7 +62,7 @@ export type TSearchTopicReset = {
 };
 export type TUpdateReactions = {
   readonly type: typeof UPDATE_REACTIONS;
-  payload: TUpdatedReactions;
+  payload: TReactionsProps;
 };
 
 export type TTopicsActions =
