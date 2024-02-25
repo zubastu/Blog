@@ -56,7 +56,7 @@ const Topic = () => {
                 isDisliked={topic.isDisliked}
                 isLiked={topic.isLiked}
                 likesCount={topic.likesCount}
-                isSearchList={location?.state?.isSearchList || false}
+                isSearchList={location?.state?.isSearchList}
               />
             </div>
 

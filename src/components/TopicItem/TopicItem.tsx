@@ -3,6 +3,7 @@ import Reactions from '../Reactions/Reactions';
 import TopicReadButton from '../TopicReadButton/TopicReadButton';
 import { topicButtonReadTextContent } from '../../constants/textContentConstants';
 import { TTopicItemProps } from '../../types/types';
+import { useNavigate } from 'react-router';
 
 const TopicItem: React.FC<TTopicItemProps> = ({
   image,
@@ -14,6 +15,11 @@ const TopicItem: React.FC<TTopicItemProps> = ({
   isLiked,
   isDisliked,
 }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/topic/${id}`, { state: { isSearchList } });
+  };
+
   return (
     <li className={styles.topicContainer}>
       <img className={styles.topicImage} src={image} alt="Картинка топика" />
@@ -32,8 +38,7 @@ const TopicItem: React.FC<TTopicItemProps> = ({
           />
           <TopicReadButton
             text={topicButtonReadTextContent}
-            id={id}
-            isSearchList={isSearchList}
+            handleClick={handleClick}
           />
         </div>
       </div>

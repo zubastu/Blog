@@ -15,8 +15,19 @@
   text-align: left;
   max-width: 1140px;
   font-weight: 400;
-
 }
+
 .subtitle {
   @include mixins.typography-m;
+}
+
+@media (max-width: 800px) {
+  .heading {
+    @include mixins.typography-x;
+  }
+
+  .subtitle {
+    @include mixins.typography-mm;
+    text-align: center;
+  }
 }

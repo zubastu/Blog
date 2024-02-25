@@ -24,6 +24,11 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.topicTitle {
+  @include mixins.typography-l;
+}
+
 .topicContainer:last-child{
   margin: 0;
 }
@@ -34,3 +39,27 @@
   justify-content: space-between;
 }
 
+@media (max-width: 800px) {
+  .topicReactionsContainer {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .topicTitle {
+    @include mixins.typography-mm;
+  }
+}
+
+@media (max-width: 670px) {
+  .topicImage {
+    min-height: max-content;
+  }
+}
+
+@media (max-width: 450px) {
+  .topicButtonContainer {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+}

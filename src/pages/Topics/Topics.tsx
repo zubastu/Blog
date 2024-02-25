@@ -8,7 +8,7 @@ import { SEARCH_TOPICS_RESET } from '../../services/actions/topicsActions';
 
 const Topics = () => {
   const dispatch = useAppDispatch();
-  const { topicList, searchTopicList, hasRequest } = useAppSelector(
+  const { topicList, searchTopicList, hasRequest, isRequest } = useAppSelector(
     (store) => store.topics,
   );
   const mainTopic = topicList?.length > 0 ? topicList[0] : false;
@@ -25,12 +25,17 @@ const Topics = () => {
   const handleResetSearch = () => {
     dispatch({ type: SEARCH_TOPICS_RESET });
   };
-
+  const showMainTopicFromList = !isRequest && !hasRequest && mainTopic;
+  const showMainTopicFromSearchList =
+    !isRequest && hasRequest && mainSearchTopic;
+  const showOtherTopicsFromMainList = !isRequest && !hasRequest && otherTopics;
+  const showOtherTopicsFromSearchList =
+    !isRequest && hasRequest && otherSearchTopics;
   return (
     <section className={styles.main}>
       <SearchForm />
 
-      {!hasRequest && mainTopic && (
+      {showMainTopicFromList && (
         <MainTopic
           title={mainTopic.title}
           body={mainTopic.body}
@@ -43,7 +48,7 @@ const Topics = () => {
         />
       )}
 
-      {hasRequest && mainSearchTopic ? (
+      {showMainTopicFromSearchList ? (
         <MainTopic
           title={mainSearchTopic.title}
           body={mainSearchTopic.body}
@@ -56,12 +61,12 @@ const Topics = () => {
           isSearchList={true}
         />
       ) : (
+        !isRequest &&
         hasRequest && <p className={styles.noResultsText}>Нет совпадений</p>
       )}
 
       <ul className={styles.topicList}>
-        {!hasRequest &&
-          otherTopics &&
+        {showOtherTopicsFromMainList &&
           otherTopics?.map(
             ({
               image,
@@ -86,8 +91,7 @@ const Topics = () => {
               />
             ),
           )}
-        {hasRequest &&
-          otherSearchTopics &&
+        {showOtherTopicsFromSearchList &&
           otherSearchTopics?.map(
             ({
               image,
@@ -114,7 +118,7 @@ const Topics = () => {
             ),
           )}
       </ul>
-      {hasRequest && (
+      {!isRequest && hasRequest && (
         <button className={styles.resetButton} onClick={handleResetSearch}>
           {topicBackLinkTextContent}
         </button>

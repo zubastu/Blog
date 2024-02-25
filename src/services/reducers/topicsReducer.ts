@@ -49,7 +49,13 @@ export const topicReducer = (state = initialState, action: TTopicsActions) => {
       };
 
     case SEARCH_TOPICS_RESET:
-      return { ...state, isError: true, isRequest: false, hasRequest: false };
+      return {
+        ...state,
+        isError: true,
+        isRequest: false,
+        hasRequest: false,
+        searchTopicList: [],
+      };
 
     case TOPIC_BY_ID_ERROR:
       return { ...state, isError: true, isRequest: false };
@@ -64,7 +70,6 @@ export const topicReducer = (state = initialState, action: TTopicsActions) => {
       };
 
     case UPDATE_REACTIONS:
-      console.log(action.payload);
       const list = action.payload.isSearchList
         ? state.searchTopicList
         : state.topicList;
@@ -79,7 +84,9 @@ export const topicReducer = (state = initialState, action: TTopicsActions) => {
             }
           : topic;
       });
-      return { ...state, topicList };
+      return action.payload.isSearchList
+        ? { ...state, searchTopicList: topicList }
+        : { ...state, topicList };
 
     default:
       return state;

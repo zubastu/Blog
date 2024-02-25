@@ -43,3 +43,18 @@
   align-items: center;
   justify-content: flex-end;
 }
+
+@media (max-width: 800px) {
+  .topicReactionsContainer {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .topicTitle {
+    @include mixins.typography-mm;
+  }
+
+  .topicSubtitle {
+    @include mixins.typography-xs;
+  }
+}
