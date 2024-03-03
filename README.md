@@ -1,4 +1,4 @@
-### Для запуска нужно ввести `npm run previev` или `npm run dev` для разработки 
+### Для запуска нужно ввести `npm run preview` или `npm run dev` для разработки 
 
 ## [Ссылка](https://blog-test-case.netlify.app/) на рабочий прототип.
 
